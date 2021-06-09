@@ -1,0 +1,3 @@
+elasticssearch
+gspread
+scrapy
