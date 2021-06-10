@@ -15,7 +15,6 @@
 
 
 
-<!-- PROJECT LOGO -->
 <br />
 <p align="center">
 
@@ -23,17 +22,52 @@
 
   <p align="center">
     Friendly github crawler. 
-<!--     <br />
-    <a href="https://github.com/Ankush-Chander/github-crawler"><strong>Explore the docs »</strong></a>
-    <br />
-    <br /> -->
     </p>
 </p>
 
+# Setup
+1. Install requirements
+```
+pip install -r requirement.txt
+```
+2. Update source url as per your need in `github/github/spiders/github-user.py`
+```
+def start_requests(self):
+		urls = [
+			"your search url here"
+		]
 
+```
 
+## For Elasticsearch
+Set folllowing variables in `settings.py`
+```    
+ELASTICSEARCH_HOST = ''
+ELASTICSEARCH_PORT = 9200
+ITEM_PIPELINES = {
+   'GithubElasticsearchPipeline': 300,
+}
 
+```
+Note: This option requires index to be already created in the elasticsearch server 
 
+## For Google sheet:
+1. Set folllowing variables in `settings.py`
+```
+GOOGLE_SHEET =""
+ITEM_PIPELINES = {
+   'github.pipeline.GithubExcelPipeline': 300,
+}
+```
+2. Store googleapi credentials in `utility/gsheets_credentials.json`
+
+Note: This option requires an existing google sheet with permissions "Editable by anyone who has link"
+
+# Run instructions
+```
+cd github
+scrapy crawl github-user-search
+```
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
