@@ -82,10 +82,10 @@ class GithubUserSearchSpider(scrapy.Spider):
             github_link = f"https://github.com/{username}"
 
             try:
-                followers, following, *stars = response.xpath(
+                followers, following, *_ = response.xpath(
                     '//*[@class="Link--secondary no-underline no-wrap"]/span/text()').getall()
                 # print(f"res:{res}")
-                print(f"followers: {followers}, following: {following}, stars: {stars}")
+                # print(f"followers: {followers}, following: {following}, _: {_}")
             except Exception as err:
                 raise Exception("follow count issue.")
 
