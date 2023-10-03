@@ -38,6 +38,13 @@ def start_requests(self):
 		]
 
 ```
+## For CSV (default)
+Set folllowing variables in `settings.py`
+```    
+ITEM_PIPELINES = {
+   'GithubCsvPipeline': 300,
+}
+```
 
 ## For Elasticsearch
 Set folllowing variables in `settings.py`
